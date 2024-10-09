@@ -49,8 +49,6 @@ Borrow out = A'Bin + A'B + BBin
 
 **Procedure**
 
-Write the detailed procedure here
-
 ~~~
 **Full Adder:**
 1.Open Quartus II and create a new project.
@@ -94,7 +92,7 @@ module fullsub_top(a,b,Bin,BO,DIFF);
 input a,b,Bin;
 output BO,DIFF;
 assign DIFF = a ^ b ^ Bin;
-  assign BO = (a & b) | ((a ^ b) & Bin);
+assign BO = (a & b) | ((a ^ b) & Bin);
 endmodule
 
 ~~~
