@@ -49,20 +49,20 @@ Borrow out = A'Bin + A'B + BBin
 
 **Procedure**
 
-~~~
+
 **Full Adder:**
-1.Open Quartus II and create a new project.
-2.Use schematic design entry to draw the full adder circuit. 
-3.The circuit consists of XOR, AND, and OR gates. 
-4.Compile the design, verify its functionality through simulation. 
-5.Implement the design on the target device and program it.
+1. Open Quartus II and create a new project.
+2. Use schematic design entry to draw the full adder circuit. 
+3. The circuit consists of XOR, AND, and OR gates. 
+4. Compile the design, verify its functionality through simulation. 
+5. Implement the design on the target device and program it.
 
 **Full Subtractor:** 
-1.Follow the same steps as for the full adder. 
-2.Draw the full subtractor circuit using schematic design. 
-3.The circuit includes XOR, AND, OR gates to perform subtraction. 
-4.Compile, simulate, implement, and program the design similarly to the full adder.
-~~~
+1. Follow the same steps as for the full adder. 
+2. Draw the full subtractor circuit using schematic design. 
+3. The circuit includes XOR, AND, OR gates to perform subtraction. 
+4. Compile, simulate, implement, and program the design similarly to the full adder.
+
 
 **Program:**
 
@@ -73,43 +73,42 @@ RegisterNumber:212223230002
 */
 
 ## Full_adder
-module fulladd_top(a,b,cin,sum,carry);
+module proj_41(a,b,cin,sum,carry);
 input a,b,cin;
-output sum,carry;
-wire w1,w2,w3,w4;       
-xor(w1,a,b);
-xor(sum,w1,cin);        
-
-and(w2,a,b);
-and(w3,b,cin);
-and(w4,cin,a);
-
-or(carry,w2,w3,w4);
-endmodule 
+output sum, carry;
+assign sum=(a^b^cin);
+assign carry=((a&b)|(b&cin)|(cin&a));
+endmodule
 
 ## Full_subtractor
-module fullsub_top(a,b,Bin,BO,DIFF);
-input a,b,Bin;
-output BO,DIFF;
-assign DIFF = a ^ b ^ Bin;
-assign BO = (a & b) | ((a ^ b) & Bin);
+module proj_42(a,b,bin,borr,diff);
+input a,b,bin;
+output diff, borr;
+assign diff=(a^b^bin);
+assign borr=((~a&b)|(b&bin)|(bin&~a));
 endmodule
 
 ~~~
 
 **RTL Schematic**
 
-![318332382-c01e6c3c-d648-4bad-8a98-66d93df13f1a](https://github.com/04Varsha/FULL_ADDER_SUBTRACTOR/assets/149035374/2e45d893-4f83-4a98-8bc2-d0d30b70e7e2)
+**FULL ADDER**
+
+![image](https://github.com/user-attachments/assets/b4f05a08-05de-4600-8f74-608be2fcd923)
+
+**FULL SUBTRACTOR**
+
+![image](https://github.com/user-attachments/assets/13bb6559-57ea-488e-a939-1d5b065c1cb6)
 
 **Output Timing Waveform**
 
 **FULL ADDER**
 
-![318332443-3411cbc7-4f76-4664-a513-e348a9880eff](https://github.com/04Varsha/FULL_ADDER_SUBTRACTOR/assets/149035374/5d286c1d-e62e-454a-a389-00ba2c2a91fc)
+![image](https://github.com/user-attachments/assets/d49a074d-bf33-4198-922f-ac295f290ad4)
 
 **FULL SUBTRACTOR**
 
-![318332487-1cc068c4-6398-4a52-bae8-39c6657c0a9a](https://github.com/04Varsha/FULL_ADDER_SUBTRACTOR/assets/149035374/03d5d030-815e-4847-a976-2fd282cf0333)
+![image](https://github.com/user-attachments/assets/fb9853a5-657d-4434-bf49-e7ef72331966)
 
 
 **Result:**
